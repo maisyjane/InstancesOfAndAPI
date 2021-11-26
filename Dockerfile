@@ -1,6 +1,8 @@
-FROM golang:1.12.0-alpine3.9
-RUN mkdir /app
-ADD . /app
+FROM golang:1.16-alpine
 WORKDIR /app
-RUN go build -o main
-CMD["/app/main"]
+COPY go.mod ./
+RUN go mod download
+COPY *.go ./
+RUN go build -o /instances_of_and
+EXPOSE 8000
+CMD ["/instances_of_and"]
