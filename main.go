@@ -9,9 +9,9 @@ import (
 )
 
 type Response struct {
-	Text           string `json:"Text`
-	InstancesOfAnd string `json:"InstancesOfAnd`
-	HttpStatus     string `json:"HttpStatus`
+	Text       string `json:"Text`
+	Answer     string `json:"answer`
+	HttpStatus string `json:"HttpStatus`
 }
 
 func OutputResponse(text string) Response {
@@ -20,7 +20,7 @@ func OutputResponse(text string) Response {
 	var code string
 	if text == "" {
 		text_response = "Invalid String"
-		instances_response = "N/A"
+		instances_response = "0"
 		code = "404"
 
 	} else {
@@ -30,9 +30,9 @@ func OutputResponse(text string) Response {
 	}
 
 	response := Response{
-		Text:           text_response,
-		InstancesOfAnd: instances_response,
-		HttpStatus:     code,
+		Text:       text_response,
+		Answer:     instances_response,
+		HttpStatus: code,
 	}
 
 	return response

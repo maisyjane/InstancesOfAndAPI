@@ -56,7 +56,7 @@ func TestOutputResponse(t *testing.T) {
 			args: args{
 				text: "",
 			},
-			want: Response{"Invalid String", "N/A", "404"},
+			want: Response{"Invalid String", "0", "404"},
 		},
 		{
 			args: args{
