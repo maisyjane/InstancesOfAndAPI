@@ -9,30 +9,35 @@ import (
 )
 
 type Response struct {
-	Text       string `json:"Text`
+	Text       string `json:"text`
 	Answer     string `json:"answer`
 	HttpStatus string `json:"HttpStatus`
+	Error      string `json:error`
 }
 
 func OutputResponse(text string) Response {
 	var text_response string
 	var instances_response string
 	var code string
+	var error string
 	if text == "" {
 		text_response = "Invalid String"
 		instances_response = "0"
 		code = "404"
+		error = "true"
 
 	} else {
 		text_response = text
 		instances_response = fmt.Sprintf("%d", InstancesOfAnd(text))
 		code = "200"
+		error = "false"
 	}
 
 	response := Response{
 		Text:       text_response,
 		Answer:     instances_response,
 		HttpStatus: code,
+		Error:      error,
 	}
 
 	return response
@@ -57,6 +62,7 @@ func main() {
 	log.Fatal(http.ListenAndServe(":8000", nil))
 }
 
+//empty string in here? it handles it already with 404 but just to show it off more
 func InstancesOfAnd(text string) int {
 	var counter int = 0
 	replacer := strings.NewReplacer(",", "", ".", "", ";", "")

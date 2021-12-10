@@ -56,24 +56,24 @@ func TestOutputResponse(t *testing.T) {
 			args: args{
 				text: "",
 			},
-			want: Response{"Invalid String", "0", "404"},
+			want: Response{"Invalid String", "0", "404", "true"},
 		},
 		{
 			args: args{
 				text: "Hi there",
 			},
-			want: Response{"Hi there", "0", "200"},
+			want: Response{"Hi there", "0", "200", "false"},
 		},
 		{
 			args: args{
 				text: "andandand",
 			},
-			want: Response{"andandand", "0", "200"}, //only counts instances of and used as a word rather than the 3 characters repeated
+			want: Response{"andandand", "0", "200", "false"}, //only counts instances of and used as a word rather than the 3 characters repeated
 		}, {
 			args: args{
 				text: "Maisy and Nell and Finn",
 			},
-			want: Response{"Maisy and Nell and Finn", "2", "200"},
+			want: Response{"Maisy and Nell and Finn", "2", "200", "false"},
 		}}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
