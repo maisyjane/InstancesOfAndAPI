@@ -66,6 +66,12 @@ func TestOutputResponse(t *testing.T) {
 		},
 		{
 			args: args{
+				text: "1234",
+			},
+			want: Response{"Please enter words, not numbers", "0", "404", "true"},
+		},
+		{
+			args: args{
 				text: "andandand",
 			},
 			want: Response{"andandand", "0", "200", "false"}, //only counts instances of and used as a word rather than the 3 characters repeated

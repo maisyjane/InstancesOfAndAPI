@@ -20,12 +20,20 @@ func OutputResponse(text string) Response {
 	var instances_response string
 	var code string
 	var error string
+	isNotDigit := func(c rune) bool { return c < '0' || c > '9' || c == ' ' }
+	b := strings.IndexFunc(text, isNotDigit) == -1
+
 	if text == "" {
 		text_response = "Invalid String"
 		instances_response = "0"
 		code = "404"
 		error = "true"
 
+	} else if b {
+		text_response = "Please enter words, not numbers"
+		instances_response = fmt.Sprintf("%d", InstancesOfAnd(text))
+		code = "404"
+		error = "true"
 	} else {
 		text_response = text
 		instances_response = fmt.Sprintf("%d", InstancesOfAnd(text))
