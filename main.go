@@ -72,17 +72,22 @@ func main() {
 
 //empty string in here? it handles it already with 404 but just to show it off more
 func InstancesOfAnd(text string) int {
-	var counter int = 0
-	replacer := strings.NewReplacer(",", "", ".", "", ";", "")
-	text = replacer.Replace(text)
-	words := strings.Fields(text)
-	for i := range words {
-		if words[i] == "and" {
-			counter++
-		}
+	if text == "" {
+		return 0
+	} else {
+		var counter int = 0
+		replacer := strings.NewReplacer(",", "", ".", "", ";", "")
+		text = replacer.Replace(text)
+		words := strings.Fields(text)
+		for i := range words {
+			if words[i] == "and" {
+				counter++
+			}
 
+		}
+		return counter
 	}
-	return counter
+
 }
 
 //see bookmarks for json

@@ -32,6 +32,12 @@ func TestInstancesOfAnd(t *testing.T) {
 				text: "andandand",
 			},
 			want: 0,
+		},
+		{
+			args: args{
+				text: "",
+			},
+			want: 0,
 		}}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
